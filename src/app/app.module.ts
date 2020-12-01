@@ -1,9 +1,8 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "@nativescript/angular";
+import { NativeScriptCommonModule, NativeScriptModule } from "@nativescript/angular";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { TabsRoutingModule } from "~/app/tabs/tabs-routing.module";
 
 @NgModule({
     bootstrap: [
@@ -12,7 +11,7 @@ import { TabsRoutingModule } from "~/app/tabs/tabs-routing.module";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        TabsRoutingModule
+        NativeScriptCommonModule
     ],
     declarations: [
         AppComponent

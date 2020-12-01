@@ -3,5 +3,23 @@
 </ActionBar>
 
 <GridLayout>
-    <Label class="h1" text="elo"></Label>
+    <StackLayout *ngFor="let one of collection" orientation="vertical">
+        <AbsoluteLayout>
+<!--            <Label [text]="one.data.nazwa"></Label>-->
+            <Label [text]="one.uid"></Label>
+        </AbsoluteLayout>
+    </StackLayout>
+
+    <StackLayout>
+        <AbsoluteLayout>
+            <Label text="elo"></Label>
+            <Label text="elo"></Label>
+            <Label text="elo"></Label>
+            <Label text="elo"></Label>
+            <Label text="elo"></Label>
+
+        </AbsoluteLayout>
+    </StackLayout>
+    <Label [text]="collection"></Label>
+    <Button (tap)="checkCollection()" text="baza"></Button>
 </GridLayout>
