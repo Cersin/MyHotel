@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "267712212649",
+    "firebase_url": "https://hotel-database-18f74.firebaseio.com",
+    "project_id": "hotel-database-18f74",
+    "storage_bucket": "hotel-database-18f74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:267712212649:android:81189bc390dfcc886083b8",
+        "android_client_info": {
+          "package_name": "org.nativescript.MyHotel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "267712212649-0oa9bl83a5v8hi6j386r7qr14fila4qj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDm0Lz7l2HNsbVuZ7biwU9pqGFNNmxdzrU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "267712212649-0oa9bl83a5v8hi6j386r7qr14fila4qj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
