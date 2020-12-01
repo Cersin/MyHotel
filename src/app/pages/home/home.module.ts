@@ -3,7 +3,6 @@ import { NativeScriptCommonModule } from "@nativescript/angular";
 
 import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
-import { ItemDetailComponent } from "./item-detail/item-detail.component";
 
 @NgModule({
     imports: [
@@ -11,8 +10,7 @@ import { ItemDetailComponent } from "./item-detail/item-detail.component";
         HomeRoutingModule
     ],
     declarations: [
-        HomeComponent,
-        ItemDetailComponent
+        HomeComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
-import { DataService, DataItem } from "../shared/data.service";
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute, Router } from "@angular/router";
+import { Page } from "@nativescript/core";
 
 @Component({
     selector: "Login",
@@ -10,9 +10,12 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-    constructor(private _routerExtension: RouterExtensions, private _activeRoute: ActivatedRoute, private router: Router) { }
+    constructor(private _routerExtension: RouterExtensions,
+                private _activeRoute: ActivatedRoute,
+                private page: Page) { }
 
     ngOnInit(): void {
+        this.page.actionBarHidden = true;
     }
 
     navigateToHome() {
