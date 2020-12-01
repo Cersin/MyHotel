@@ -6,7 +6,7 @@ import { HomeComponent } from "./home.component";
 import { ItemDetailComponent } from "./item-detail/item-detail.component";
 
 const routes: Routes = [
-    { path: "default", component: HomeComponent },
+    { path: "", component: HomeComponent },
     { path: "item/:id", component: ItemDetailComponent }
 ];
 

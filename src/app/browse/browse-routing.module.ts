@@ -5,7 +5,7 @@ import { NativeScriptRouterModule } from "@nativescript/angular";
 import { BrowseComponent } from "./browse.component";
 
 const routes: Routes = [
-    { path: "default", component: BrowseComponent }
+    { path: "", component: BrowseComponent }
 ];
 
 @NgModule({
