@@ -1,8 +1,47 @@
-<ActionBar>
-    <Label text="Logowanie"></Label>
-</ActionBar>
+<StackLayout class="background" height="100%">
+    <GridLayout class="login" rows="auto, auto, auto">
 
-<GridLayout>
-    <Label text="login"></Label>
-    <Button (tap)="navigateToHome()">NavigateToHOme</Button>
-</GridLayout>
+    <!--    Logo-->
+        <StackLayout row="0" class="login__logo" orientation="horizontal">
+            <Image class="login__logo-image" src="~/assets/login/logo1.png" loadMode="sync"></Image>
+            <Label class="login__logo-text" text="MyHotel"></Label>
+        </StackLayout>
+        <!--   Koniec Logo-->
+
+        <!--    Formularz-->
+        <StackLayout class="login__form" row="1" orientation="vertical">
+            <StackLayout class="login__form__typing" orientation="horizontal">
+                <Image class="fas login__form__typing-image" src="font://&#xf007;" stretch="none"></Image>
+                <TextField class="login__form__typing-textField" hint="Adres e-mail" keyboardType="email" autocorrect="false" autocapitalizationType="none"></TextField>
+            </StackLayout>
+
+
+            <StackLayout class="login__form__typing" orientation="horizontal">
+                <Image class="fas login__form__typing-image" src="font://&#xf023;" stretch="none"></Image>
+                <TextField class="login__form__typing-textField" hint="Hasło" secure="true"></TextField>
+            </StackLayout>
+
+            <StackLayout *ngIf="!isLoggingIn" class="login__form__typing" orientation="vertical">
+                <TextField class="login__form__typing-textField" hint="Powtórz hasło" secure="true"></TextField>
+                <TextField class="login__form__typing-textField" hint="Podaj kod dostępu"></TextField>
+            </StackLayout>
+
+            <Button *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
+            <Button *ngIf="!isLoggingIn" class="login-button -primary" text="Zarejestruj się"></Button>
+        </StackLayout>
+        <!--    Koniec Formularza-->
+
+        <!--    Zmiana logowania/rejestracji-->
+        <StackLayout class="login__changeLogin" row="2" orientation="vertical">
+            <Label (tap)="toggleDisplay()" *ngIf="isLoggingIn" class="login__changeLogin__description" text="Zarejestruj się"></Label>
+            <Label (tap)="toggleDisplay()" *ngIf="!isLoggingIn" class="login__changeLogin__description" text="Zaloguj się"></Label>
+
+            <StackLayout *ngIf="isLoggingIn" class="login__changeLogin__action" orientation="horizontal">
+                <Label class="login__changeLogin__action-smaller" text="Nie pamiętasz hasła?"></Label>
+                <Label class="login__changeLogin__action-bigger" text="Przypomnij hasło"></Label>
+            </StackLayout>
+        </StackLayout>
+        <!--   Koniec Zmiana logowania/rejestracji-->
+
+    </GridLayout>
+</StackLayout>

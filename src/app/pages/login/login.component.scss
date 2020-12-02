@@ -1,0 +1,77 @@
+.login {
+  animation: fadeFromLeft 1s;
+
+  //LOGO
+    &__logo {
+      horizontal-align: center;
+      margin-top: 49;
+      margin-bottom: 100;
+
+      &-image {
+        width: 65;
+        height: 50;
+      }
+
+      &-text {
+        vertical-align: center;
+        font-size: 40;
+        font-family: "Lato-BoldItalic", serif;
+      }
+    }
+  //KONIEC LOGO
+
+  //FORMULARZ
+  &__form {
+    width: 100%;
+    margin-bottom: 25;
+
+    &__typing {
+      width: 70%;
+      margin-bottom: 10;
+
+        &-image {
+          font-size: 5;
+          vertical-align: center;
+
+        }
+
+        &-textField {
+          width: 100%;
+          vertical-align: center;
+        }
+    }
+  }
+  //KONIEC FORMULARZA
+
+  //PRZYCISK LOGOWANIA/REJESTRACJI
+  &-button {
+    width: 35%;
+    height: 30;
+    font-size: 12;
+    text-transform: uppercase;
+    border-radius: 100;
+  }
+  //KONIEC PRZYCISK LOGOWANIA/REJESTRACJI
+
+  //TOGGLE LOGOWANIE/REJESTRACJA
+  &__changeLogin {
+    horizontal-align: center;
+
+    &__description {
+      font-family: "Lato-Bold", serif;
+      margin-bottom: 10;
+    }
+
+    &__action {
+      &-smaller {
+        font-family: "Lato-Light", serif;
+      }
+
+      &-bigger {
+        margin-left: 10;
+        font-family: "Lato-Bold", serif;
+      }
+    }
+  }
+  //KONIEC TOGGLE LOGOWANIE/REJESTRACJA
+}

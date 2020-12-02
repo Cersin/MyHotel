@@ -2,24 +2,15 @@
     <Label text="Home"></Label>
 </ActionBar>
 
-<GridLayout>
-    <StackLayout *ngFor="let one of collection" orientation="vertical">
-        <AbsoluteLayout>
-<!--            <Label [text]="one.data.nazwa"></Label>-->
-            <Label [text]="one.uid"></Label>
-        </AbsoluteLayout>
-    </StackLayout>
+<!--    <StackLayout *ngFor="let one of collection" orientation="vertical">-->
+<!--        <AbsoluteLayout>-->
+<!--&lt;!&ndash;            <Label [text]="one.data.nazwa"></Label>&ndash;&gt;-->
+<!--            <Label [text]="one.uid"></Label>-->
+<!--        </AbsoluteLayout>-->
+<!--    </StackLayout>-->
 
-    <StackLayout>
-        <AbsoluteLayout>
-            <Label text="elo"></Label>
-            <Label text="elo"></Label>
-            <Label text="elo"></Label>
-            <Label text="elo"></Label>
-            <Label text="elo"></Label>
-
-        </AbsoluteLayout>
-    </StackLayout>
-    <Label [text]="collection"></Label>
-    <Button (tap)="checkCollection()" text="baza"></Button>
-</GridLayout>
+<StackLayout orientation="vertical">
+    <Label text="elo"></Label>
+    <Label text="elo"></Label>
+    <Label text="elo"></Label>
+</StackLayout>

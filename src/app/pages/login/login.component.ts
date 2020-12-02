@@ -6,9 +6,12 @@ import { Page } from "@nativescript/core";
 
 @Component({
     selector: "Login",
-    templateUrl: "./login.component.html"
+    templateUrl: "./login.component.html",
+    styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
+
+    isLoggingIn: boolean = true;
 
     constructor(private _routerExtension: RouterExtensions,
                 private _activeRoute: ActivatedRoute,
@@ -16,6 +19,10 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.page.actionBarHidden = true;
+    }
+
+    toggleDisplay() {
+        this.isLoggingIn = !this.isLoggingIn;
     }
 
     navigateToHome() {
