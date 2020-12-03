@@ -2,11 +2,17 @@ import { Injectable } from '@angular/core';
 import { firebase, firestore } from "@nativescript/firebase";
 import { User } from "~/app/models/user.model";
 import { TNSFancyAlert } from "nativescript-fancyalert";
+import { ToastDuration, Toasty } from 'nativescript-toasty-ns-7';
+import { RouterExtensions } from "@nativescript/angular";
+import { ActivatedRoute } from "@angular/router";
 
 @Injectable()
 export class AuthenticationService {
 
-    constructor() {
+    loginToast = new Toasty({text: "Zalogowano pomyślnie"});
+    loginErrorToast = new Toasty({text: "Zły adres e-mail lub hasło"});
+
+    constructor(private _routerExtension: RouterExtensions, private _activeRoute: ActivatedRoute) {
     }
 
     //POBIERA ACCESS KEY Z HOTELOW
@@ -42,7 +48,41 @@ export class AuthenticationService {
             }).then(() => {
                 console.log("Dodano zadanie w kalendarzu")})
         }
+    }
 
+    canGo(verified) {
+        if (verified) {
+            this.loginToast.setToastDuration(ToastDuration.SHORT).show();
+            this._routerExtension.navigate(['../tabs'], { clearHistory: true, relativeTo: this._activeRoute });
+        } else {
+            firebase.sendEmailVerification().then(() => {
+                console.log("Email został wysłany");
+            })
+            TNSFancyAlert.showError(
+                "Adres e-mail niezweryfikowany",
+                "Wysłano potwierdzenie jeszcze raz",
+                "Sprawdź skrzynkę"
+            )
+        }
+    }
+
+    // LOGUJE UZYTKOWNIKA
+    loginUser(user) {
+        firebase.login({
+            type: firebase.LoginType.PASSWORD,
+            passwordOptions: {
+                email: user.email,
+                password: user.password
+            }
+        })
+            .then((res) => {
+                console.log(res);
+                this.canGo(res.emailVerified);
+            })
+            .catch((error) => {
+                console.log(error);
+                this.loginErrorToast.setToastDuration(ToastDuration.SHORT).show();
+            })
     }
 
     //TWORZY UZYTKOWNIKA
@@ -75,6 +115,7 @@ export class AuthenticationService {
             );
     }
 
+    // RESETUJE HASLO
     remindPassword(email) {
         firebase.sendPasswordResetEmail(email)
             .then(() => {

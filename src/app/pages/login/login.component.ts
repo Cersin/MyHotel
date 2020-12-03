@@ -30,6 +30,11 @@ export class LoginComponent implements OnInit {
         this.page.actionBarHidden = true;
         this.user = new User();
         this.loadHotelIDs();
+        this.user.email = "cersin96@gmail.com";
+        this.user.accessKey = "AYIko8M1LjCrJtGwdACC";
+        this.user.password = "ok12345";
+        this.user.displayName = "Szymon Wójcik";
+        this.passwordCorrect = "ok12345";
     }
 
     toggleDisplay() {
@@ -51,6 +56,10 @@ export class LoginComponent implements OnInit {
                 .catch(error => console.log(error));
         }
 
+    login() {
+        this.authenticationService.loginUser(this.user);
+    }
+
     singUp() {
         if (this.user.password === this.passwordCorrect && this.hotelIds.some(e => e === this.user.accessKey)) {
             this.authenticationService.createUser(this.user);
@@ -63,7 +72,7 @@ export class LoginComponent implements OnInit {
         }
     }
 
-    resetPasswowrd() {
+    resetPassword() {
         this.authenticationService.remindPassword(this.user.email);
     }
 

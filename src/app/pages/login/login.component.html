@@ -33,7 +33,7 @@
                 <TextField [(ngModel)]="user.displayName" class="login__form__typing-textField" hint="Imię i nazwisko"></TextField>
             </StackLayout>
 
-            <Button (tap)="chechName()" *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
+            <Button (tap)="login()" *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
             <Button (tap)="singUp()" *ngIf="!isLoggingIn" class="login-button -primary" text="Zarejestruj się"></Button>
         </StackLayout>
         <!--    Koniec Formularza-->
@@ -45,7 +45,7 @@
 
             <StackLayout *ngIf="isLoggingIn" class="login__changeLogin__action" orientation="horizontal">
                 <Label class="login__changeLogin__action-smaller" text="Nie pamiętasz hasła?"></Label>
-                <Label (tap)="resetPasswowrd()" class="login__changeLogin__action-bigger" text="Przypomnij hasło"></Label>
+                <Label (tap)="resetPassword()" class="login__changeLogin__action-bigger" text="Przypomnij hasło"></Label>
             </StackLayout>
         </StackLayout>
         <!--   Koniec Zmiana logowania/rejestracji-->
