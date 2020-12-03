@@ -9,10 +9,12 @@ export class AuthenticationService {
     constructor() {
     }
 
+    //POBIERA ACCESS KEY Z HOTELOW
     hotelCheckId() {
         return firestore.collection("Hotele").get();
     }
 
+    //DODAJE KLUCZ DO BAZY UZYTKOWNIKA PO ID
     addKeyToUser(key, id) {
         firestore.collection("Users").doc(id).set({
             accessKey: key
@@ -21,6 +23,7 @@ export class AuthenticationService {
         })
     }
 
+    // GENERUJE TYMCZASOWE GODZINY DLA KALENDARZA
     addCalendarTimes(id) {
         let i = 0;
         const startDate = new Date;
@@ -42,6 +45,7 @@ export class AuthenticationService {
 
     }
 
+    //TWORZY UZYTKOWNIKA
     createUser(user: User) {
         console.log(user);
         firebase.createUser({
