@@ -74,4 +74,23 @@ export class AuthenticationService {
             }
             );
     }
+
+    remindPassword(email) {
+        firebase.sendPasswordResetEmail(email)
+            .then(() => {
+                TNSFancyAlert.showInfo(
+                    "Przypomnienie hasła",
+                    "Link do zresetowania hasła wysłano na: " + email,
+                    "Ok, zamknij!"
+                )})
+                .catch((error) => {
+                    TNSFancyAlert.showError(
+                        "Błąd",
+                        "Email o podanym adresie nie istnieje lub wystąpił inny błąd",
+                        "Ok, zamknij!"
+                    )
+                })
+
+    }
+
 }

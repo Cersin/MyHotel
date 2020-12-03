@@ -45,7 +45,7 @@
 
             <StackLayout *ngIf="isLoggingIn" class="login__changeLogin__action" orientation="horizontal">
                 <Label class="login__changeLogin__action-smaller" text="Nie pamiętasz hasła?"></Label>
-                <Label class="login__changeLogin__action-bigger" text="Przypomnij hasło"></Label>
+                <Label (tap)="resetPasswowrd()" class="login__changeLogin__action-bigger" text="Przypomnij hasło"></Label>
             </StackLayout>
         </StackLayout>
         <!--   Koniec Zmiana logowania/rejestracji-->

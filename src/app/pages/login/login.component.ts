@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
                 .catch(error => console.log(error));
         }
 
-
     singUp() {
         if (this.user.password === this.passwordCorrect && this.hotelIds.some(e => e === this.user.accessKey)) {
             this.authenticationService.createUser(this.user);
@@ -62,6 +61,10 @@ export class LoginComponent implements OnInit {
         else if (!this.hotelIds.some(e => e === this.user.accessKey)) {
             this.accessKeyFail.setToastDuration(ToastDuration.SHORT).show();
         }
+    }
+
+    resetPasswowrd() {
+        this.authenticationService.remindPassword(this.user.email);
     }
 
     navigateToHome() {
