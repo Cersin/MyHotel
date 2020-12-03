@@ -29,8 +29,6 @@ export class HomeComponent implements OnInit {
             .catch(error => console.log(error));
     }
 
-
-
     checkCollection() {
         console.log(this.collection);
     }

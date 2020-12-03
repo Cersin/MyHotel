@@ -12,22 +12,29 @@
         <StackLayout class="login__form" row="1" orientation="vertical">
             <StackLayout class="login__form__typing" orientation="horizontal">
                 <Image class="fas login__form__typing-image" src="font://&#xf007;" stretch="none"></Image>
-                <TextField class="login__form__typing-textField" hint="Adres e-mail" keyboardType="email" autocorrect="false" autocapitalizationType="none"></TextField>
+                <TextField class="login__form__typing-textField"
+                           hint="Adres e-mail"
+                           [(ngModel)]="user.email"
+                           keyboardType="email"
+                           autocorrect="false"
+                           autocapitalizationType="none"
+               ></TextField>
             </StackLayout>
 
 
             <StackLayout class="login__form__typing" orientation="horizontal">
                 <Image class="fas login__form__typing-image" src="font://&#xf023;" stretch="none"></Image>
-                <TextField class="login__form__typing-textField" hint="Hasło" secure="true"></TextField>
+                <TextField class="login__form__typing-textField" [(ngModel)]="user.password" hint="Hasło" secure="true"></TextField>
             </StackLayout>
 
             <StackLayout *ngIf="!isLoggingIn" class="login__form__typing" orientation="vertical">
-                <TextField class="login__form__typing-textField" hint="Powtórz hasło" secure="true"></TextField>
-                <TextField class="login__form__typing-textField" hint="Podaj kod dostępu"></TextField>
+                <TextField [(ngModel)]="passwordCorrect" class="login__form__typing-textField" hint="Powtórz hasło" secure="true"></TextField>
+                <TextField [(ngModel)]="user.accessKey" class="login__form__typing-textField" hint="Podaj kod dostępu"></TextField>
+                <TextField [(ngModel)]="user.displayName" class="login__form__typing-textField" hint="Imię i nazwisko"></TextField>
             </StackLayout>
 
-            <Button *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
-            <Button *ngIf="!isLoggingIn" class="login-button -primary" text="Zarejestruj się"></Button>
+            <Button (tap)="chechName()" *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
+            <Button (tap)="singUp()" *ngIf="!isLoggingIn" class="login-button -primary" text="Zarejestruj się"></Button>
         </StackLayout>
         <!--    Koniec Formularza-->
 

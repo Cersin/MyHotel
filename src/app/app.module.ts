@@ -3,6 +3,7 @@ import { NativeScriptCommonModule, NativeScriptModule } from "@nativescript/angu
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
+import { AuthenticationService } from "~/app/services/authentication.service";
 
 @NgModule({
     bootstrap: [
@@ -18,6 +19,9 @@ import { AppComponent } from "./app.component";
     ],
     schemas: [
         NO_ERRORS_SCHEMA
+    ],
+    providers: [
+        AuthenticationService
     ]
 })
 export class AppModule { }
