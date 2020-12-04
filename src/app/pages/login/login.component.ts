@@ -30,11 +30,6 @@ export class LoginComponent implements OnInit {
         this.page.actionBarHidden = true;
         this.user = new User();
         this.loadHotelIDs();
-        this.user.email = "cersin96@gmail.com";
-        this.user.accessKey = "AYIko8M1LjCrJtGwdACC";
-        this.user.password = "ok12345";
-        this.user.displayName = "Szymon Wójcik";
-        this.passwordCorrect = "ok12345";
     }
 
     toggleDisplay() {

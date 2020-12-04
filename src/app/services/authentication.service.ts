@@ -85,6 +85,13 @@ export class AuthenticationService {
             })
     }
 
+    //Zmienia displayname uzytkownika
+    setDisplayName(name) {
+        firebase.updateProfile({
+            displayName: name
+        })
+    }
+
     //TWORZY UZYTKOWNIKA
     createUser(user: User) {
         console.log(user);
@@ -94,7 +101,7 @@ export class AuthenticationService {
         }).then((userInfo) => {
             this.addKeyToUser(user.accessKey, userInfo.uid);
             this.addCalendarTimes(userInfo.uid);
-            userInfo.displayName = user.displayName;
+            this.setDisplayName(user.displayName);
             console.log(userInfo);
             TNSFancyAlert.showInfo(
                 "Konto w MyHotel!",
