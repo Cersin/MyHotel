@@ -10,7 +10,8 @@
 <!--    </StackLayout>-->
 
 <StackLayout orientation="vertical">
-    <Label text="elo"></Label>
+    <Button (tap)="getHotelDetails()"></Button>
+    <Label [text]="hotelInfo.nazwa_hotelu"></Label>
     <Label text="elo"></Label>
     <Label text="elo"></Label>
 </StackLayout>

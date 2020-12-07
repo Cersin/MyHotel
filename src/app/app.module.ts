@@ -4,6 +4,7 @@ import { NativeScriptCommonModule, NativeScriptModule } from "@nativescript/angu
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthenticationService } from "~/app/services/authentication.service";
+import { GetDataService } from "~/app/services/getData.service";
 
 @NgModule({
     bootstrap: [
@@ -21,7 +22,8 @@ import { AuthenticationService } from "~/app/services/authentication.service";
         NO_ERRORS_SCHEMA
     ],
     providers: [
-        AuthenticationService
+        AuthenticationService,
+        GetDataService
     ]
 })
 export class AppModule { }

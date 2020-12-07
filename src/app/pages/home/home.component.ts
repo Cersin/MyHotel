@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { firestore } from "@nativescript/firebase";
+import { GetDataService } from "~/app/services/getData.service";
 
 @Component({
     selector: "Home",
@@ -7,29 +8,30 @@ import { firestore } from "@nativescript/firebase";
 })
 export class HomeComponent implements OnInit {
 
-    collection = [];
+    hotelInfo: {};
 
-    constructor() { }
+    constructor(private getDataService: GetDataService) { }
 
     ngOnInit(): void {
-        // firestore.collection("Amigo123987123987").get()
+        setTimeout(() => {
+            this.getHotelDetails();
+        }, 1000);
+
+        // firestore.collection("Hotele/cPNaEpX2B14UBgpPsYUE/Pokoje").get()
         //     .then((snapshot) => {
         //         snapshot.forEach((doc) => {
         //             this.collection.push({ uid: doc.id, data: doc.data() });
         //         });
         //     })
         //     .catch(error => console.log(error));
-
-        firestore.collection("Hotele/cPNaEpX2B14UBgpPsYUE/Pokoje").get()
-            .then((snapshot) => {
-                snapshot.forEach((doc) => {
-                    this.collection.push({ uid: doc.id, data: doc.data() });
-                });
-            })
-            .catch(error => console.log(error));
     }
 
-    checkCollection() {
-        console.log(this.collection);
-    }
+    getHotelDetails() {
+        this.getDataService.getHotelDetails()
+            .then((res) => {
+                this.hotelInfo = res.data();
+                console.log(res.data());
+            });
+        }
+
 }

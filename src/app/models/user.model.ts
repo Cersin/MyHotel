@@ -3,4 +3,5 @@ export class User {
     password: string;
     accessKey: string;
     displayName: string;
+    uid: string;
 }
