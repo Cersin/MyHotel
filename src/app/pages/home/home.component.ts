@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
+import { Hotel } from "~/app/models/hotel.model";
+import { ActivityIndicator } from "@nativescript/core/ui/activity-indicator";
+import { EventData } from "@nativescript/core";
 
 @Component({
     selector: "Home",
@@ -8,30 +11,30 @@ import { GetDataService } from "~/app/services/getData.service";
 })
 export class HomeComponent implements OnInit {
 
-    hotelInfo: {};
+    hotelInfo: Hotel;
+    private accessKey: firestore.DocumentData;
+    isLoading: boolean = true;
 
     constructor(private getDataService: GetDataService) { }
 
     ngOnInit(): void {
-        setTimeout(() => {
             this.getHotelDetails();
-        }, 1000);
-
-        // firestore.collection("Hotele/cPNaEpX2B14UBgpPsYUE/Pokoje").get()
-        //     .then((snapshot) => {
-        //         snapshot.forEach((doc) => {
-        //             this.collection.push({ uid: doc.id, data: doc.data() });
-        //         });
-        //     })
-        //     .catch(error => console.log(error));
     }
 
     getHotelDetails() {
-        this.getDataService.getHotelDetails()
-            .then((res) => {
-                this.hotelInfo = res.data();
-                console.log(res.data());
-            });
-        }
+        this.isLoading = true;
+        this.getDataService.getUID().then((user) => {
+            this.getDataService.getAccessKey(user.uid).get().then((doc) => {
+                this.accessKey = doc.data();
+                })
+                .then(() => {
+                    this.getDataService.getHotelDetails(this.accessKey.accessKey).then((res) => {
+                        this.hotelInfo = res.data();
+                    }).then(() => {
+                        this.isLoading = false;
+                    })
+            })
+        })
+    }
 
 }

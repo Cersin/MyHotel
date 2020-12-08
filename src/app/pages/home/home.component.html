@@ -9,9 +9,11 @@
 <!--        </AbsoluteLayout>-->
 <!--    </StackLayout>-->
 
-<StackLayout orientation="vertical">
-    <Button (tap)="getHotelDetails()"></Button>
+<ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+
+<StackLayout *ngIf="hotelInfo" orientation="vertical">
     <Label [text]="hotelInfo.nazwa_hotelu"></Label>
-    <Label text="elo"></Label>
-    <Label text="elo"></Label>
+    <Label [text]="hotelInfo.miasto"></Label>
+    <Label [text]="hotelInfo.telefon"></Label>
+    <Label [text]="hotelInfo.ulica"></Label>
 </StackLayout>
