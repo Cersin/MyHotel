@@ -19,4 +19,8 @@ export class GetDataService {
         return firestore.collection("Hotele").doc(accessKey).get();
     }
 
+    getRooms(accessKey) {
+        return firestore.collection("Hotele").doc(accessKey).collection("Pokoje");
+    }
+
 }

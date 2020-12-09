@@ -12,6 +12,7 @@
 <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 
 <StackLayout *ngIf="hotelInfo" orientation="vertical">
+    <label [text]="userUID.displayName"></label>
     <Label [text]="hotelInfo.nazwa_hotelu"></Label>
     <Label [text]="hotelInfo.miasto"></Label>
     <Label [text]="hotelInfo.telefon"></Label>
