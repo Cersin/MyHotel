@@ -11,10 +11,12 @@
 
 <ActivityIndicator [busy]="isLoading"></ActivityIndicator>
 
-<StackLayout *ngIf="hotelInfo" orientation="vertical">
-    <label [text]="userUID.displayName"></label>
+<StackLayout orientation="vertical" *ngIf="hotelInfo" class="info">
+    <Label [text]="userUID.displayName"></Label>
+    <Label [text]="calendar.eventName"></Label>
     <Label [text]="hotelInfo.nazwa_hotelu"></Label>
     <Label [text]="hotelInfo.miasto"></Label>
     <Label [text]="hotelInfo.telefon"></Label>
     <Label [text]="hotelInfo.ulica"></Label>
+    <Button text="cos tam" (tap)="test()"></Button>
 </StackLayout>

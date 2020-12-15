@@ -5,6 +5,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { AuthenticationService } from "~/app/services/authentication.service";
 import { GetDataService } from "~/app/services/getData.service";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     bootstrap: [
@@ -13,7 +14,8 @@ import { GetDataService } from "~/app/services/getData.service";
     imports: [
         NativeScriptModule,
         AppRoutingModule,
-        NativeScriptCommonModule
+        NativeScriptCommonModule,
+        CommonModule
     ],
     declarations: [
         AppComponent

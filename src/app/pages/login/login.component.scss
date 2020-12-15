@@ -1,3 +1,5 @@
+@import "~/app/styles/variables";
+
 .login {
   animation: fadeFromLeft 1s;
 
@@ -5,7 +7,7 @@
     &__logo {
       horizontal-align: center;
       margin-top: 49;
-      margin-bottom: 100;
+      margin-bottom: 70;
 
       &-image {
         width: 65;
@@ -15,7 +17,6 @@
       &-text {
         vertical-align: center;
         font-size: 40;
-        font-family: "Lato-BoldItalic", serif;
       }
     }
   //KONIEC LOGO
@@ -32,13 +33,17 @@
         &-image {
           font-size: 5;
           vertical-align: center;
+          color: $color-black;
 
         }
 
         &-textField {
           width: 100%;
           vertical-align: center;
+          color: $color-white;
+          placeholder-color: $color-white-grey;
         }
+
     }
   }
   //KONIEC FORMULARZA
@@ -70,6 +75,7 @@
       &-bigger {
         margin-left: 10;
         font-family: "Lato-Bold", serif;
+        color: $color-black;
       }
     }
   }

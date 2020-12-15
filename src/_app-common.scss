@@ -5,10 +5,15 @@
 @import "app/styles/animations";
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
-// Font icon class
-
 
 // Custom tabstrip item class
+TabStrip {
+    selected-item-color: blueviolet;
+    un-selected-item-color: brown;
+    highlight-color: gold;
+}
+
+
 .navigation__item {
     &:active,
     &:active Label {
@@ -19,6 +24,7 @@
 // Common page class
 * {
     //font-family: "Font Awesome 5 Free", "fa-regular-400", serif;
-    font-family: "Lato-Regular", serif;
+    font-family: "Alata-Regular", serif;
     font-size: $default-font-size;
+    color: $color-white;
 }
