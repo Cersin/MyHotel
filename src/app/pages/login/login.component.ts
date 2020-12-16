@@ -70,9 +70,4 @@ export class LoginComponent implements OnInit {
     resetPassword() {
         this.authenticationService.remindPassword(this.user.email);
     }
-
-    navigateToHome() {
-        this._routerExtension.navigate(['../tabs'], { clearHistory: true, relativeTo: this._activeRoute });
-
-    }
 }

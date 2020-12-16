@@ -1,4 +1,25 @@
-.info {
-  color: black;
-  background-color: black;
+@import "~/app/styles/variables";
+
+.home {
+  &__user {
+    margin-top: 30;
+    width: 100%;
+
+    &-logout {
+      width: 30%;
+      height: 25;
+      font-size: 14;
+    }
+
+    &-name {
+      vertical-align: center;
+    }
+
+    &-work {
+      text-align: center;
+      margin-top: 15;
+    }
+
+  }
+
 }

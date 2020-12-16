@@ -32,8 +32,8 @@
                 <TextField [(ngModel)]="user.displayName" class="login__form__typing-textField" hint="Imię i nazwisko"></TextField>
             </StackLayout>
 
-            <Button (tap)="login()" *ngIf="isLoggingIn" class="login-button -primary" text="Zaloguj się"></Button>
-            <Button (tap)="singUp()" *ngIf="!isLoggingIn" class="login-button -primary" text="Zarejestruj się"></Button>
+            <Button (tap)="login()" *ngIf="isLoggingIn" class="login-button button-grey" text="Zaloguj się"></Button>
+            <Button (tap)="singUp()" *ngIf="!isLoggingIn" class="login-button button-grey" text="Zarejestruj się"></Button>
         </StackLayout>
         <!--    Koniec Formularza-->
 

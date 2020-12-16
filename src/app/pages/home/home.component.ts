@@ -4,7 +4,8 @@ import { GetDataService } from "~/app/services/getData.service";
 import { Hotel } from "~/app/models/hotel.model";
 import { CommonModule } from "@angular/common";
 import { ActivityIndicator } from "@nativescript/core/ui/activity-indicator";
-import { EventData } from "@nativescript/core";
+import { Page } from "@nativescript/core";
+import {RouterExtensions} from "@nativescript/angular";
 
 @Component({
     selector: "Home",
@@ -21,20 +22,17 @@ export class HomeComponent implements OnInit {
     userUID: firebase.User;
     isLoading: boolean = true;
 
-    constructor(private getDataService: GetDataService) { }
+    constructor(private getDataService: GetDataService,
+                private _routerExtension: RouterExtensions,
+                page: Page) {
+        page.actionBarHidden = true;
+    }
 
     ngOnInit(): void {
             this.loadData();
     }
 
-    test() {
-        console.log(this.calendar);
-    }
-
     loadData() {
-        console.log(this.timeNow.getDate());
-        console.log(this.timeNow.getMonth());
-        console.log(this.timeNow.getFullYear());
         // Ustawia ładowanie na true
         this.isLoading = true;
         // Pobiera UID
@@ -47,9 +45,6 @@ export class HomeComponent implements OnInit {
                 .then(() => {
                     // Pobiera godzine pracy na dzis:
                     this.getDataService.getAccessKey(user.uid).collection("calendar")
-                        // .where("startDate.getDate()", "==", this.timeNow.getDate())
-                        // .where("endDate.getMonth()", "==", this.timeNow.getMonth())
-                        // .where("endDate.getFullYear()", "==", this.timeNow.getFullYear())
                         .get()
                         .then((snapshots) => {
                             snapshots.forEach((doc) => {
@@ -81,6 +76,15 @@ export class HomeComponent implements OnInit {
                 // Ustawia ładowanie na false
                 this.isLoading = false;
             })
+        })
+    }
+
+    logout() {
+        firebase.logout().then(() => {
+            console.log("Wylogowano");
+            this._routerExtension.navigate(['/login'], { clearHistory: true });
+        }).catch((e) => {
+            console.log(e);
         })
     }
 

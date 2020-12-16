@@ -8,15 +8,34 @@
 <!--            <Label [text]="one.uid"></Label>-->
 <!--        </AbsoluteLayout>-->
 <!--    </StackLayout>-->
+<GridLayout class="background" height="100%" width="100%">
+    <ActivityIndicator height="20%" width="20%" color="white" [busy]="isLoading"></ActivityIndicator>
+</GridLayout>
 
-<ActivityIndicator [busy]="isLoading"></ActivityIndicator>
+<GridLayout *ngIf="!isLoading" class="background home" rows="auto, *, auto">
+    <StackLayout class="home__user" row="0" orientation="vertical" *ngIf="userUID">
+        <StackLayout orientation="horizontal">
+            <Button (tap)="logout()" class="home__user-logout button-grey" text="&larr; Wyloguj"></Button>
+            <Label class="home__user-name" [text]="'Witaj, ' + userUID.displayName"></Label>
+        </StackLayout>
+        <Label class="home__user-work" *ngIf="calendar">
+            <Span text="Dziś pracujesz od: "></Span>
+            <Span [text]="(calendar.startDate | date: 'HH:mm') + '-' + (calendar.endDate | date: 'HH:mm')"></Span>
+        </Label>
+        <Label class="horizontal-line"></Label>
+    </StackLayout>
 
-<StackLayout orientation="vertical" *ngIf="hotelInfo" class="info">
-    <Label [text]="userUID.displayName"></Label>
-    <Label [text]="calendar.eventName"></Label>
-    <Label [text]="hotelInfo.nazwa_hotelu"></Label>
-    <Label [text]="hotelInfo.miasto"></Label>
-    <Label [text]="hotelInfo.telefon"></Label>
-    <Label [text]="hotelInfo.ulica"></Label>
-    <Button text="cos tam" (tap)="test()"></Button>
-</StackLayout>
+    <StackLayout class="home__rooms" row="1" orientation="horizontal">
+        <Label text="bedzie"></Label>
+<!--        TODO-->
+    </StackLayout>
+
+    <StackLayout class="home__hotelInfo" row="2" orientation="vertical" *ngIf="hotelInfo">
+        <Label [text]="hotelInfo.nazwa_hotelu"></Label>
+        <Label [text]="hotelInfo.miasto"></Label>
+        <Label [text]="hotelInfo.telefon"></Label>
+        <Label [text]="hotelInfo.ulica"></Label>
+    </StackLayout>
+</GridLayout>
+
+
