@@ -70,4 +70,5 @@ export class LoginComponent implements OnInit {
     resetPassword() {
         this.authenticationService.remindPassword(this.user.email);
     }
+
 }

@@ -12,7 +12,7 @@
     <ActivityIndicator height="20%" width="20%" color="white" [busy]="isLoading"></ActivityIndicator>
 </GridLayout>
 
-<GridLayout *ngIf="!isLoading" class="background home" rows="auto, *, auto">
+<GridLayout *ngIf="!isLoading" class="background home" rows="auto, auto, *, auto">
     <StackLayout class="home__user" row="0" orientation="vertical" *ngIf="userUID">
         <StackLayout orientation="horizontal">
             <Button (tap)="logout()" class="home__user-logout button-grey" text="&larr; Wyloguj"></Button>
@@ -25,16 +25,58 @@
         <Label class="horizontal-line"></Label>
     </StackLayout>
 
-    <StackLayout class="home__rooms" row="1" orientation="horizontal">
-        <Label text="bedzie"></Label>
-<!--        TODO-->
+    <StackLayout class="disinfect" row="1">
+        <Label class="disinfect-text" text="Pamiętaj w pierwszej kolejności o dezynfekcji pokojów!"></Label>
     </StackLayout>
 
-    <StackLayout class="home__hotelInfo" row="2" orientation="vertical" *ngIf="hotelInfo">
-        <Label [text]="hotelInfo.nazwa_hotelu"></Label>
-        <Label [text]="hotelInfo.miasto"></Label>
-        <Label [text]="hotelInfo.telefon"></Label>
-        <Label [text]="hotelInfo.ulica"></Label>
+    <ScrollView row="2"  orientation="horizontal">
+        <StackLayout class="home__rooms" orientation="horizontal">
+            <GridLayout *ngFor="let room of rooms"  class="home__rooms__room" rows="*, auto">
+                <StackLayout row="0" class="home__rooms__room-description" orientation="vertical">
+                    <Label [text]="'Pokój nr: ' + room.numer_pokoju"></Label>
+                    <Label [text]="'Ilość miejsc: ' + room.ilosc_miejsc"></Label>
+                    <Label>
+                        <Span color="black" text="Odkazone: "></Span>
+                        <Span *ngIf="!room.stan.odkazone" text="&#xf057;" class="fas t-25 icon-blue"></Span>
+                        <Span *ngIf="room.stan.odkazone" text="&#xf058;" class="fas t-25 icon-blue"></Span>
+                    </Label>
+                    <Label>
+                        <Span color="black" text="Posprzatane: "></Span>
+                        <Span *ngIf="!room.stan.posprzatane" text="&#xf057;" class="fas t-25 icon-blue"></Span>
+                        <Span *ngIf="room.stan.posprzatane" text="&#xf058;" class="fas t-25 icon-blue"></Span>
+                    </Label>
+                </StackLayout>
+                <Button (tap)="check()" row="1" class="button-blue home__rooms__room-edit" text="Rozpocznij"></Button>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+
+
+    <StackLayout class="home__hotelInfo" row="3" orientation="vertical" *ngIf="hotelInfo">
+        <Label class="horizontal-line"></Label>
+        <Label class="home__hotelInfo-description" text="Informacje na temat hotelu:"></Label>
+        <StackLayout class="home__hotelInfo__details" orientation="vertical">
+            <StackLayout class="home__hotelInfo__details-line" orientation="horizontal">
+                <Label text="&#xf279;" class="fas t-20 info-icon"></Label>
+                <Label class="home__hotelInfo__details-line-text" [text]="'Nazwa Hotelu: ' + hotelInfo.nazwa_hotelu"></Label>
+            </StackLayout>
+
+            <StackLayout class="home__hotelInfo__details-line" orientation="horizontal">
+                <Label text="&#xf3c5;" class="fas t-20 info-icon"></Label>
+                <Label class="home__hotelInfo__details-line-text" [text]="'Adres: ' + hotelInfo.miasto + ', ul: ' + hotelInfo.ulica"></Label>
+            </StackLayout>
+
+            <StackLayout class="home__hotelInfo__details-line" orientation="horizontal">
+                <Label text="&#xf095;" class="fas t-20 info-icon"></Label>
+                <Label class="home__hotelInfo__details-line-text" [text]="'Telefon: ' + hotelInfo.telefon"></Label>
+            </StackLayout>
+
+            <StackLayout class="home__hotelInfo__details-line" orientation="horizontal">
+                <Label text="&#xf017;" class="fas t-20 info-icon"></Label>
+                <Label class="home__hotelInfo__details-line-text" [text]="'Godzina otwarcia: ' + hotelInfo.otwarcie + '-' + hotelInfo.zamkniecie"></Label>
+            </StackLayout>
+        </StackLayout>
+
     </StackLayout>
 </GridLayout>
 

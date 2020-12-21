@@ -3,4 +3,6 @@ export class Hotel {
     nazwa_hotelu: string;
     telefon: number;
     ulica: string;
+    otwarcie: number;
+    zamkniecie: number;
 }

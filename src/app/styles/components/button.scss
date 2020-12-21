@@ -8,3 +8,14 @@
     box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
   }
 }
+
+.button-blue {
+  border-radius: 100;
+  background-color: $color-blue;
+  color: $color-white;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+}

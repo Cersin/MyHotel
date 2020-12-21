@@ -5,7 +5,8 @@ import { Hotel } from "~/app/models/hotel.model";
 import { CommonModule } from "@angular/common";
 import { ActivityIndicator } from "@nativescript/core/ui/activity-indicator";
 import { Page } from "@nativescript/core";
-import {RouterExtensions} from "@nativescript/angular";
+import { RouterExtensions } from "@nativescript/angular";
+import { Room } from "~/app/models/room.model";
 
 @Component({
     selector: "Home",
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
     timeNow = new Date();
     calendar: firestore.DocumentData = [];
     hotelInfo: Hotel;
-    rooms = [];
+    rooms: Array<Room> = [];
     private accessKey: firestore.DocumentData;
     userUID: firebase.User;
     isLoading: boolean = true;
@@ -30,6 +31,10 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
             this.loadData();
+    }
+
+    check() {
+        console.log(this.rooms);
     }
 
     loadData() {
@@ -68,8 +73,11 @@ export class HomeComponent implements OnInit {
                         .get()
                         .then((snapshot) => {
                         snapshot.forEach((doc) => {
-                            this.rooms.push({ id: doc.id, data: doc.data()});
-                            // console.log({id: doc.id, data: doc.data()});
+                            this.rooms.push({ id: doc.id,
+                                ilosc_miejsc: doc.data().ilosc_miejsc,
+                                numer_pokoju: doc.data().numer_pokoju,
+                                stan: doc.data().stan,
+                                wyposazenie: doc.data().wyposazenie});
                         })
                     })
             }).then(() => {
