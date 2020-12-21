@@ -6,6 +6,7 @@ import { AppComponent } from "./app.component";
 import { AuthenticationService } from "~/app/services/authentication.service";
 import { GetDataService } from "~/app/services/getData.service";
 import { CommonModule } from "@angular/common";
+import { TabsModule } from "~/app/tabs/tabs.module";
 
 @NgModule({
     bootstrap: [
@@ -15,7 +16,8 @@ import { CommonModule } from "@angular/common";
         NativeScriptModule,
         AppRoutingModule,
         NativeScriptCommonModule,
-        CommonModule
+        CommonModule,
+        TabsModule
     ],
     declarations: [
         AppComponent

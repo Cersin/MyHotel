@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { firebase, firestore} from "@nativescript/firebase";
+import { firebase, firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
 import { Hotel } from "~/app/models/hotel.model";
 import { CommonModule } from "@angular/common";
@@ -7,6 +7,8 @@ import { ActivityIndicator } from "@nativescript/core/ui/activity-indicator";
 import { Page } from "@nativescript/core";
 import { RouterExtensions } from "@nativescript/angular";
 import { Room } from "~/app/models/room.model";
+import { Router } from "@angular/router";
+import { stringify } from "@angular/compiler/src/util";
 
 @Component({
     selector: "Home",
@@ -33,8 +35,8 @@ export class HomeComponent implements OnInit {
             this.loadData();
     }
 
-    check() {
-        console.log(this.rooms);
+    check(room: Room) {
+        this._routerExtension.navigate(['/edit'], {queryParams: { room: JSON.stringify(room) } });
     }
 
     loadData() {
@@ -74,10 +76,10 @@ export class HomeComponent implements OnInit {
                         .then((snapshot) => {
                         snapshot.forEach((doc) => {
                             this.rooms.push({ id: doc.id,
-                                ilosc_miejsc: doc.data().ilosc_miejsc,
-                                numer_pokoju: doc.data().numer_pokoju,
-                                stan: doc.data().stan,
-                                wyposazenie: doc.data().wyposazenie});
+                                              ilosc_miejsc: doc.data().ilosc_miejsc,
+                                              numer_pokoju: doc.data().numer_pokoju,
+                                              stan: doc.data().stan,
+                                              wyposazenie: doc.data().wyposazenie});
                         })
                     })
             }).then(() => {

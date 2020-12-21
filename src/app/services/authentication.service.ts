@@ -85,14 +85,14 @@ export class AuthenticationService {
             })
     }
 
-    //Zmienia displayname uzytkownika
+    // Zmienia displayname uzytkownika
     setDisplayName(name) {
         firebase.updateProfile({
             displayName: name
         })
     }
 
-    //TWORZY UZYTKOWNIKA
+    // TWORZY UZYTKOWNIKA
     createUser(user: User) {
         console.log(user);
         firebase.createUser({
