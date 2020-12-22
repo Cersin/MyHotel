@@ -37,4 +37,28 @@
       }
     }
   }
+
+  &__equipment {
+    background-color: rgba(196, 196, 196, .9);
+    width: 80%;
+    horizontal-align: center;
+    border-radius: 30;
+    padding-bottom: 10;
+
+    &-title {
+      text-align: center;
+      font-size: 24;
+      font-weight: bold;
+    }
+
+    &__option {
+      margin: 0;
+      padding: 0;
+      &-description {
+        margin-left: 20;
+        vertical-align: center;
+        width: 60%;
+      }
+    }
+  }
 }

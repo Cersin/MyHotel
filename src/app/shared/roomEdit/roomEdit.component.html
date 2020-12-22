@@ -2,7 +2,7 @@
     <Label text="Browse"></Label>
 </ActionBar>
 
-<GridLayout rows="auto, auto" height="100%" class="roomView">
+<GridLayout rows="auto, auto, auto" height="100%" class="roomView">
     <StackLayout class="roomView__top" row="0" orientation="horizontal">
         <StackLayout (tap)="goBack()" class="roomView__top__back">
             <Label class="roomView__top__back-arrow" text="&larr;"></Label>
@@ -11,6 +11,120 @@
         <StackLayout class="roomView__top__room">
             <Label class="roomView__top__room-text" [text]="' Pokój nr: ' + room.numer_pokoju"></Label>
         </StackLayout>
+    </StackLayout>
+
+    <StackLayout class="roomView__equipment margin-bottom" row="1" orientation="vertical">
+        <Label class="roomView__equipment-title" text="Stan"></Label>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Dostępność kluczy: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.stan.klucze = !room.stan.klucze"
+                   *ngIf="room.stan.klucze"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.stan.klucze = !room.stan.klucze"
+                   *ngIf="!room.stan.klucze"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Nowa pościel: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.stan.nowa_posciel = !room.stan.nowa_posciel"
+                   *ngIf="room.stan.nowa_posciel"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.stan.nowa_posciel = !room.stan.nowa_posciel"
+                   *ngIf="!room.stan.nowa_posciel"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Odkażone: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.stan.odkazone = !room.stan.odkazone"
+                   *ngIf="room.stan.odkazone"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.stan.odkazone = !room.stan.odkazone"
+                   *ngIf="!room.stan.odkazone"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Posprzątane: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.stan.posprzatane = !room.stan.posprzatane"
+                   *ngIf="room.stan.posprzatane"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.stan.posprzatane = !room.stan.nowa_posciel"
+                   *ngIf="!room.stan.posprzatane"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Uzupełniona lodówka: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.stan.uzupelniona_lodowka = !room.stan.nowa_posciel"
+                   *ngIf="room.stan.uzupelniona_lodowka"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.stan.uzupelniona_lodowka = !room.stan.uzupelniona_lodowka"
+                   *ngIf="!room.stan.uzupelniona_lodowka"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+    </StackLayout>
+
+    <StackLayout class="roomView__equipment" row="2" orientation="vertical">
+        <Label class="roomView__equipment-title" text="Wyposażenie"></Label>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Jacuzzi: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.wyposazenie.jacuzzi = !room.wyposazenie.jacuzzi"
+                   *ngIf="room.wyposazenie.jacuzzi"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.wyposazenie.jacuzzi = !room.wyposazenie.jacuzzi"
+                   *ngIf="!room.wyposazenie.jacuzzi"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Minibar: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.wyposazenie.minibar = !room.wyposazenie.minibar"
+                   *ngIf="room.wyposazenie.minibar"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.wyposazenie.minibar = !room.wyposazenie.minibar"
+                   *ngIf="!room.wyposazenie.minibar"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__equipment__option" orientation="horizontal">
+            <Label class="roomView__equipment__option-description"
+                   text="Telewizja: "></Label>
+            <Label text="&#xf058;"
+                   (tap)="room.wyposazenie.tv = !room.wyposazenie.tv"
+                   *ngIf="room.wyposazenie.tv"
+                   class="icon-check fas"></Label>
+            <Label text="&#xf057;"
+                   (tap)="room.wyposazenie.tv = !room.wyposazenie.tv"
+                   *ngIf="!room.wyposazenie.tv"
+                   class="icon-times fas"></Label>
+        </StackLayout>
+
     </StackLayout>
 
 </GridLayout>
