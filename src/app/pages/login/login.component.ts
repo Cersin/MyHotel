@@ -32,7 +32,6 @@ export class LoginComponent implements OnInit {
         this.user = new User();
         this.loadHotelIDs();
         this.user.email = appSettings.getString("email", "");
-        this.user.password = "ok12345";
     }
 
     toggleDisplay() {
