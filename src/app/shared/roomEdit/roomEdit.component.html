@@ -2,5 +2,15 @@
     <Label text="Browse"></Label>
 </ActionBar>
 
-<GridLayout height="100%" class="background">
+<GridLayout rows="auto, auto" height="100%" class="roomView">
+    <StackLayout class="roomView__top" row="0" orientation="horizontal">
+        <StackLayout (tap)="goBack()" class="roomView__top__back">
+            <Label class="roomView__top__back-arrow" text="&larr;"></Label>
+        </StackLayout>
+
+        <StackLayout class="roomView__top__room">
+            <Label class="roomView__top__room-text" [text]="' Pokój nr: ' + room.numer_pokoju"></Label>
+        </StackLayout>
+    </StackLayout>
+
 </GridLayout>

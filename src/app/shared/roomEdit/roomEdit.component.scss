@@ -1,0 +1,40 @@
+@import "~/app/styles/variables";
+
+.roomView {
+  background-image: url("~/assets/edit/roomtlo.png");
+  background-size: cover;
+
+  &__top {
+
+    &__back {
+      height: 150;
+      width: 150;
+      background-color: $color-light-grey;
+      clip-path: circle(100.0% at 10% 9%);
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      }
+
+      &-arrow {
+        margin-left: 10;
+        font-size: 40;
+      }
+    }
+
+    &__room {
+      margin-bottom: 30;
+      height: 80;
+      width: 250;
+      background-color: $color-grey;
+      border-radius: 50;
+      vertical-align: center;
+
+      &-text {
+        text-align: center;
+        font-size: 30;
+      }
+    }
+  }
+}

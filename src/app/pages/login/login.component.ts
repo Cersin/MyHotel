@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { Page } from "@nativescript/core";
 import { User } from "~/app/models/user.model";
 import { AuthenticationService } from "~/app/services/authentication.service";
+const appSettings = require("@nativescript/core/application-settings");
 
 @Component({
     selector: "Login",
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.page.actionBarHidden = true;
         this.user = new User();
         this.loadHotelIDs();
+        this.user.email = appSettings.getString("email", "");
     }
 
     toggleDisplay() {
@@ -53,6 +55,7 @@ export class LoginComponent implements OnInit {
 
     login() {
         this.authenticationService.loginUser(this.user);
+        appSettings.setString("email", this.user.email);
     }
 
     singUp() {

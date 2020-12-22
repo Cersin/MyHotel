@@ -2,26 +2,29 @@ import { Component, OnInit } from "@angular/core";
 import { Page } from "@nativescript/core";
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
+import { Room } from "~/app/models/room.model";
 
 @Component({
     selector: "RoomEdit",
-    templateUrl: "./roomEdit.component.html"
+    templateUrl: "./roomEdit.component.html",
+    styleUrls: ["./roomEdit.component.scss"]
 })
 export class RoomEditComponent implements OnInit {
-    room: any;
-    constructor(private page: Page, private activateRoute: ActivatedRoute) {
-        // Use the component constructor to inject providers.
+    room: Room;
+    constructor(private page: Page,
+                private _activateRoute: ActivatedRoute,
+                private _routerExtension: RouterExtensions) {
         page.actionBarHidden = true;
-        const received = this.activateRoute.snapshot.queryParams;
+        const received = this._activateRoute.snapshot.queryParams;
         this.room = JSON.parse(received.room);
         console.log(this.room);
-       // this.activateRoute.queryParams.subscribe((params) => {
-       //      console.log(params);
-       //  })
-
     }
 
     ngOnInit(): void {
         // Use the "ngOnInit" handler to initialize data for the view.
+    }
+
+    goBack() {
+        this._routerExtension.backToPreviousPage();
     }
 }
