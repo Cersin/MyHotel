@@ -2,7 +2,7 @@
     <Label text="Browse"></Label>
 </ActionBar>
 
-<GridLayout rows="auto, auto, auto" height="100%" class="roomView">
+<GridLayout rows="auto, auto, auto, auto" height="100%" class="roomView">
     <StackLayout class="roomView__top" row="0" orientation="horizontal">
         <StackLayout (tap)="goBack()" class="roomView__top__back">
             <Label class="roomView__top__back-arrow" text="&larr;"></Label>
@@ -63,7 +63,7 @@
                    *ngIf="room.stan.posprzatane"
                    class="icon-check fas"></Label>
             <Label text="&#xf057;"
-                   (tap)="room.stan.posprzatane = !room.stan.nowa_posciel"
+                   (tap)="room.stan.posprzatane = !room.stan.posprzatane"
                    *ngIf="!room.stan.posprzatane"
                    class="icon-times fas"></Label>
         </StackLayout>
@@ -72,7 +72,7 @@
             <Label class="roomView__equipment__option-description"
                    text="Uzupełniona lodówka: "></Label>
             <Label text="&#xf058;"
-                   (tap)="room.stan.uzupelniona_lodowka = !room.stan.nowa_posciel"
+                   (tap)="room.stan.uzupelniona_lodowka = !room.stan.uzupelniona_lodowka"
                    *ngIf="room.stan.uzupelniona_lodowka"
                    class="icon-check fas"></Label>
             <Label text="&#xf057;"
@@ -125,6 +125,10 @@
                    class="icon-times fas"></Label>
         </StackLayout>
 
+    </StackLayout>
+
+    <StackLayout row="3">
+        <Button (tap)="updateRoom()" text="Aktualizuj"></Button>
     </StackLayout>
 
 </GridLayout>

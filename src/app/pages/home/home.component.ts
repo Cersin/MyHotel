@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
     check(room: Room) {
-        this._routerExtension.navigate(['/edit'], {queryParams: { room: JSON.stringify(room) } });
+        this._routerExtension.navigate(['/edit'], {queryParams: { room: JSON.stringify(room), accessKey: JSON.stringify(this.accessKey) } });
     }
 
     loadData() {
