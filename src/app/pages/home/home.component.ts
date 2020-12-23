@@ -2,13 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { firebase, firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
 import { Hotel } from "~/app/models/hotel.model";
-import { CommonModule } from "@angular/common";
-import { ActivityIndicator } from "@nativescript/core/ui/activity-indicator";
 import { Page } from "@nativescript/core";
 import { RouterExtensions } from "@nativescript/angular";
 import { Room } from "~/app/models/room.model";
-import { Router } from "@angular/router";
-import { stringify } from "@angular/compiler/src/util";
 
 @Component({
     selector: "Home",
@@ -40,8 +36,12 @@ export class HomeComponent implements OnInit {
     }
 
     loadData() {
-        // Ustawia ładowanie na true
+        // Ustawia ładowanie na true oraz zeruje inne zmienne
         this.isLoading = true;
+        this.calendar = [];
+        this.rooms = [];
+        this.accessKey = null;
+        this.userUID = null;
         // Pobiera UID
         this.getDataService.getUID().then((user) => {
             this.userUID = user;
