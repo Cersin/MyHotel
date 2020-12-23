@@ -19,6 +19,7 @@ export class RoomEditComponent {
     constructor(private page: Page,
                 private _activateRoute: ActivatedRoute,
                 private updateService: UpdateDataService,
+                private _activatedRoute: ActivatedRoute,
                 private _routerExtension: RouterExtensions) {
         page.actionBarHidden = true;
         const received = this._activateRoute.snapshot.queryParams;
@@ -42,13 +43,13 @@ export class RoomEditComponent {
             }
         }).then(() => {
             this.roomUpdated.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
-            this._routerExtension.navigate(["../tabs"], { clearHistory: true });
+            this._routerExtension.navigate(["../tabs"], { clearHistory: true, skipLocationChange: true });
         }).catch((err) => {
             console.log(err);
         })
     }
 
     goBack() {
-        this._routerExtension.backToPreviousPage();
+        this._routerExtension.back({relativeTo: this._activatedRoute});
     }
 }
