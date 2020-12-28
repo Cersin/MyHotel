@@ -7,4 +7,8 @@ export class UpdateDataService {
     updateRoom(accessKey, id) {
         return firestore.collection("Hotele").doc(accessKey).collection("Pokoje").doc(id);
     }
+
+    updateSpa(accessKey, id) {
+        return firestore.collection("Hotele").doc(accessKey).collection("Strefa_Spa").doc(id);
+    }
 }

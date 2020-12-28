@@ -11,10 +11,10 @@ const routes: Routes = [
                 outlet: "homeTab"
             },
             {
-                path: "browse",
+                path: "list",
                 component: NSEmptyOutletComponent,
-                loadChildren: () => import("~/app/pages/browse/browse.module").then((m) => m.BrowseModule),
-                outlet: "browseTab"
+                loadChildren: () => import("~/app/pages/list/list.module.ts").then((m) => m.ListModule),
+                outlet: "listTab"
             },
             {
                 path: "search",

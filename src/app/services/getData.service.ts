@@ -23,4 +23,8 @@ export class GetDataService {
         return firestore.collection("Hotele").doc(accessKey).collection("Pokoje");
     }
 
+    getSpa(accessKey) {
+        return firestore.collection("Hotele").doc(accessKey).collection("Strefa_Spa");
+    }
+
 }

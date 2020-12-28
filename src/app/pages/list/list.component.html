@@ -1,0 +1,122 @@
+<ActionBar>
+    <Label [text]="actionBarName"></Label>
+</ActionBar>
+
+<GridLayout class="background" height="100%" width="100%">
+    <ActivityIndicator height="20%" width="20%" color="white" [busy]="isLoading"></ActivityIndicator>
+</GridLayout>
+
+<GridLayout *ngIf="!isLoading" height="100%" class="background listView" rows="auto, auto, *">
+    <StackLayout row="0" class="listView__buttonChange" orientation="horizontal">
+        <Button class="listView__buttonChange-button" (tap)="changeView('Pokoje')" [class]="actionBarName === 'Pokoje' ? 'button-grey':'button-blue'" text="POKOJE"></Button>
+        <Button class="listView__buttonChange-button" (tap)="changeView('SPA')" [class]="actionBarName === 'SPA' ? 'button-grey':'button-blue'" text="SPA"></Button>
+    </StackLayout>
+
+    <Button row="1" class="button-grey button-refresh" text="Odśwież" (tap)="loadData()"></Button>
+
+    <ListView row="2" [items]="rooms" *ngIf="actionBarName === 'Pokoje'">
+        <ng-template let-room="item">
+            <StackLayout orientation="vertical" (tap)="check(room)">
+                <Label [text]="'Numer pokoju: ' + room.numer_pokoju" class="t-25" verticalAlignment="center" style="width: 100%"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+
+    <GridLayout class="spa" row="2" rows="auto, auto, *" *ngIf="actionBarName === 'SPA'">
+        <ScrollView row="0" height="40%">
+            <StackLayout class="spa__window margin-bottom" orientation="vertical">
+                <Label class="spa__window-title" text="Basen"></Label>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Chlor: "></Label>
+                    <Label text="&#xf058;"
+                           (tap)="spa.Basen.chlor = !spa.Basen.chlor"
+                           *ngIf="spa.Basen.chlor"
+                           class="icon-check fas"></Label>
+                    <Label text="&#xf057;"
+                           (tap)="spa.Basen.chlor = !spa.Basen.chlor"
+                           *ngIf="!spa.Basen.chlor"
+                           class="icon-times fas"></Label>
+                </StackLayout>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Czyste ręczniki: "></Label>
+                    <Label text="&#xf058;"
+                           (tap)="spa.Basen.czyste_reczniki = !spa.Basen.czyste_reczniki"
+                           *ngIf="spa.Basen.czyste_reczniki"
+                           class="icon-check fas"></Label>
+                    <Label text="&#xf057;"
+                           (tap)="spa.Basen.czyste_reczniki = !spa.Basen.czyste_reczniki"
+                           *ngIf="!spa.Basen.czyste_reczniki"
+                           class="icon-times fas"></Label>
+                </StackLayout>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="pH: "></Label>
+                    <Label text="&#xf058;"
+                           (tap)="spa.Basen.pH = !spa.Basen.pH"
+                           *ngIf="spa.Basen.pH"
+                           class="icon-check fas"></Label>
+                    <Label text="&#xf057;"
+                           (tap)="spa.Basen.pH = !spa.Basen.pH"
+                           *ngIf="!spa.Basen.pH"
+                           class="icon-times fas"></Label>
+                </StackLayout>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Temperatura: "></Label>
+                    <Label [text]="spa.Basen.temperatura + '&#8451;'"
+                           class="icon-check"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <ScrollView row="1" height="40%">
+            <StackLayout class="spa__window" orientation="vertical">
+                <Label class="spa__window-title" text="Sauna"></Label>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Czyste ręczniki: "></Label>
+                    <Label text="&#xf058;"
+                           (tap)="spa.Sauna.czyste_reczniki = !spa.Sauna.czyste_reczniki"
+                           *ngIf="spa.Sauna.czyste_reczniki"
+                           class="icon-check fas"></Label>
+                    <Label text="&#xf057;"
+                           (tap)="spa.Sauna.czyste_reczniki = !spa.Sauna.czyste_reczniki"
+                           *ngIf="!spa.Sauna.czyste_reczniki"
+                           class="icon-times fas"></Label>
+                </StackLayout>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Oleje: "></Label>
+                    <Label text="&#xf058;"
+                           (tap)="spa.Sauna.oleje = !spa.Sauna.oleje"
+                           *ngIf="spa.Sauna.oleje"
+                           class="icon-check fas"></Label>
+                    <Label text="&#xf057;"
+                           (tap)="spa.Sauna.oleje = !spa.Sauna.oleje"
+                           *ngIf="!spa.Sauna.oleje"
+                           class="icon-times fas"></Label>
+                </StackLayout>
+
+                <StackLayout class="spa__window__option" orientation="horizontal">
+                    <Label class="spa__window__option-description"
+                           text="Temperatura: "></Label>
+                    <Label [text]="spa.Sauna.temperatura + '&#8451;'"
+                           class="icon-check"></Label>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+
+        <Button class="button-grey button-update" row="2" (tap)="updateSpa()" text="Aktualizuj"></Button>
+
+    </GridLayout>
+
+
+</GridLayout>

@@ -14,5 +14,6 @@ export class Room {
         jacuzzi: boolean;
         minibar: boolean;
         tv: boolean;
+        klimatyzacja: boolean;
     }
 }

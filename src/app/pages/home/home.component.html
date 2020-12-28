@@ -20,13 +20,15 @@
     </StackLayout>
 
     <StackLayout class="disinfect" row="1" orientation="vertical">
-        <Label class="disinfect-text" text="Pamiętaj w pierwszej kolejności o dezynfekcji pokojów!"></Label>
+        <Label class="disinfect-text" textWrap="true" text="Pamiętaj w pierwszej kolejności o dezynfekcji pokojów!"></Label>
     </StackLayout>
 
     <ScrollView row="2"  orientation="horizontal">
         <StackLayout class="home__rooms" orientation="horizontal">
             <GridLayout *ngFor="let room of rooms"  class="home__rooms__room" rows="*, auto">
-                <StackLayout row="0" class="home__rooms__room-description" orientation="vertical">
+                <ScrollView row="0">
+
+                <StackLayout class="home__rooms__room-description" orientation="vertical">
                     <Label [text]="'Pokój nr: ' + room.numer_pokoju"></Label>
                     <Label [text]="'Ilość miejsc: ' + room.ilosc_miejsc"></Label>
                     <Label>
@@ -40,6 +42,7 @@
                         <Span *ngIf="room.stan.posprzatane" text="&#xf058;" class="fas t-25 icon-blue"></Span>
                     </Label>
                 </StackLayout>
+                </ScrollView>
                 <Button (tap)="check(room)" row="1" class="button-blue home__rooms__room-edit" text="Rozpocznij"></Button>
             </GridLayout>
         </StackLayout>

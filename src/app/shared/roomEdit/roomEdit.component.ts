@@ -39,7 +39,8 @@ export class RoomEditComponent {
             wyposazenie: {
                 jacuzzi: this.room.wyposazenie.jacuzzi,
                 minibar: this.room.wyposazenie.minibar,
-                tv: this.room.wyposazenie.tv
+                tv: this.room.wyposazenie.tv,
+                klimatyzacja: this.room.wyposazenie.klimatyzacja
             }
         }).then(() => {
             this.roomUpdated.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
