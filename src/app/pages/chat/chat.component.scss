@@ -1,0 +1,110 @@
+@import "~/app/styles/variables";
+
+.chatView {
+  height: 100%;
+
+  &__container {
+    margin: 50 15 15 15;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 25px;
+
+    &__messages {
+
+      &__description {
+        color: $color-black;
+        font-size: 8;
+        width: 100%;
+        //flex-direction: row;
+
+        &-time {
+          order: 2;
+          color: $color-black;
+          font-size: 12;
+          margin-left: 50;
+          width: 50;
+        }
+
+        &-display {
+          align-self: flex-start;
+          order: 1;
+          color: $color-black;
+          font-size: 12;
+          margin-left: 20;
+          width: 150;
+        }
+      }
+
+      &-text {
+        width: 80%;
+        border-radius: 20;
+        font-size: 16;
+        padding: 5 10 5 10;
+      }
+    }
+
+    &__sendPanel {
+      height: 10%;
+      width: 100%;
+      background-color: #555555;
+
+      TextField {
+        height: 70%;
+        width: 60%;
+        background-color: rgba(196, 196, 196, 0.2);
+        color: $color-white;
+        border-radius: 40;
+        placeholder-color: $color-white;
+        font-size: 18;
+        margin-top: 50%;
+        padding-left: 15;
+      }
+
+      Button {
+        margin-top: 10;
+        height: 70%;
+        width: 10%;
+        font-weight: bold;
+        font-size: 20;
+      }
+    }
+  }
+
+}
+
+
+
+// Wiadomość z lewej strony
+.leftAlign {
+  background-color: $color-white;
+  color: $color-black;
+  horizontal-align: left;
+  margin-left: 5;
+}
+
+.flexLeft {
+  flex-direction: row;
+}
+
+// Wiadomość z prawej strony
+.rightAlign {
+  background-color: $color-dark-grey;
+  color: $color-white;
+  horizontal-align: right;
+  margin-right: 5;
+}
+
+.timeRight {
+  color: $color-black;
+  font-size: 12;
+  margin-right: 20;
+}
+
+.displayRight {
+  color: $color-black;
+  font-size: 12;
+  margin-right: 50;
+}
+
+.flexRight {
+  flex-direction: row-reverse;
+}

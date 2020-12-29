@@ -17,10 +17,10 @@ const routes: Routes = [
                 outlet: "listTab"
             },
             {
-                path: "search",
+                path: "chat",
                 component: NSEmptyOutletComponent,
-                loadChildren: () => import("~/app/pages/search/search.module").then((m) => m.SearchModule),
-                outlet: "searchTab"
+                loadChildren: () => import("~/app/pages/chat/chat.module.ts").then((m) => m.ChatModule),
+                outlet: "chatTab"
             }
 
 ];
