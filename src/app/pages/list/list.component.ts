@@ -48,7 +48,7 @@ export class ListComponent implements OnInit {
     updateSpa() {
         this.updateService.updateSpa(this.accessKey.accessKey, this.spaID).update({
             Basen: {
-                ph: this.spa.Basen.pH,
+                pH: this.spa.Basen.pH,
                 temperatura: this.spa.Basen.temperatura,
                 czyste_reczniki: this.spa.Basen.czyste_reczniki,
                 chlor: this.spa.Basen.chlor

@@ -2,5 +2,16 @@
     <Label text="Search"></Label>
 </ActionBar>
 
-<GridLayout>
+<GridLayout rows="auto,auto,auto,*" height="100%" backgroundColor="orangered">
+    <Button marginTop="50" row="0" color="yellow" text="Dodaj wiadomosc" (tap)="add()"></Button>
+    <Button row="1" color="green" text="refresh" (tap)="check()"></Button>
+    <Button row="2" color="brown" text="reverse" (tap)="reverse()"></Button>
+    <ScrollView row="3">
+        <StackLayout orientation="vertical">
+            <StackLayout *ngFor="let message of messages.reverse()" orientation="vertical">
+                <Label [text]="message.message"></Label>
+                <Label [text]="message.user"></Label>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </GridLayout>

@@ -44,6 +44,7 @@
     "@nativescript/firebase": "^11.1.3",
     "@nativescript/theme": "~2.3.0",
     "nativescript-fancyalert": "^3.0.9",
+    "nativescript-local-notifications": "^4.2.1",
     "nativescript-toasty-ns-7": "^14.0.0",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",

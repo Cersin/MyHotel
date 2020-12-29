@@ -8,6 +8,7 @@ import { GetDataService } from "~/app/services/getData.service";
 import { CommonModule } from "@angular/common";
 import { TabsModule } from "~/app/tabs/tabs.module";
 import { UpdateDataService } from "~/app/services/updateData.service";
+import {AddDataService} from "~/app/services/addData.service";
 
 @NgModule({
     bootstrap: [
@@ -29,7 +30,8 @@ import { UpdateDataService } from "~/app/services/updateData.service";
     providers: [
         AuthenticationService,
         GetDataService,
-        UpdateDataService
+        UpdateDataService,
+        AddDataService
     ]
 })
 export class AppModule { }
