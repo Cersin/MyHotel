@@ -16,6 +16,10 @@
                 <Label text="Czat"></Label>
                 <Image src="font://&#xf086;" class="far t-36"></Image>
             </TabStripItem>
+            <TabStripItem class="navigation__item">
+                <Label text="Kalendarz"></Label>
+                <Image src="font://&#xf086;" class="far t-36"></Image>
+            </TabStripItem>
         </TabStrip>
 
         <TabContentItem>
@@ -28,5 +32,9 @@
 
         <TabContentItem>
             <page-router-outlet name="chatTab"></page-router-outlet>
+        </TabContentItem>
+
+        <TabContentItem>
+            <page-router-outlet name="calendarTab"></page-router-outlet>
         </TabContentItem>
     </Tabs>

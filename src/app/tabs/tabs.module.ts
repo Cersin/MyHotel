@@ -4,6 +4,7 @@ import { TabsRoutingModule } from "./tabs-routing.module";
 import { TabsComponent } from "./tabs.component";
 import { HomeModule } from "~/app/pages/home/home.module";
 import { ListModule } from "~/app/pages/list/list.module";
+import { CalendarModule } from "~/app/pages/calendar/calendar.module";
 
 @NgModule({
     bootstrap: [
@@ -12,7 +13,8 @@ import { ListModule } from "~/app/pages/list/list.module";
     imports: [
         TabsRoutingModule,
         HomeModule,
-        ListModule
+        ListModule,
+        CalendarModule
     ],
     declarations: [
         TabsComponent

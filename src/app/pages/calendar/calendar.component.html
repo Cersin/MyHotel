@@ -1,0 +1,15 @@
+<ActionBar>
+    <Label text="Twój kalendarz pracy"></Label>
+</ActionBar>
+
+<GridLayout class="background" height="100%" width="100%">
+    <ActivityIndicator height="20%" width="20%" color="white" [busy]="isLoading"></ActivityIndicator>
+</GridLayout>
+
+<GridLayout *ngIf="!isLoading" height="100%" class="background listView" rows="*">
+    <RadCalendar row="0" [eventSource]="calendarEvents"
+                 eventsViewMode="Popover"
+                 selectionMode="Single"
+                 transitionMode="Slide"></RadCalendar>
+<!--    <Button (tap)="check()" text="check" row="0"></Button>-->
+</GridLayout>

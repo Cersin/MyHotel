@@ -21,6 +21,12 @@ const routes: Routes = [
                 component: NSEmptyOutletComponent,
                 loadChildren: () => import("~/app/pages/chat/chat.module.ts").then((m) => m.ChatModule),
                 outlet: "chatTab"
+            },
+            {
+                path: "calendar",
+                component: NSEmptyOutletComponent,
+                loadChildren: () => import("~/app/pages/calendar/calendar.module.ts").then((m) => m.CalendarModule),
+                outlet: "calendarTab"
             }
 
 ];

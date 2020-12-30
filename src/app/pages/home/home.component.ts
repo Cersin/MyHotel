@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     userUID: firebase.User;
     isLoading: boolean = true;
 
+
     constructor(private getDataService: GetDataService,
                 private _routerExtension: RouterExtensions,
                 page: Page) {

@@ -46,6 +46,7 @@
     "nativescript-fancyalert": "^3.0.9",
     "nativescript-local-notifications": "^4.2.1",
     "nativescript-toasty-ns-7": "^14.0.0",
+    "nativescript-ui-calendar": "^7.0.2",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.6.0",
     "zone.js": "~0.11.1"
