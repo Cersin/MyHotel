@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { firebase, firestore } from "@nativescript/firebase";
 import { User } from "~/app/models/user.model";
 import { TNSFancyAlert } from "nativescript-fancyalert";
-import { ToastDuration, Toasty } from 'nativescript-toasty-ns-7';
+import { ToastDuration, Toasty } from '@triniwiz/nativescript-toasty';
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
 

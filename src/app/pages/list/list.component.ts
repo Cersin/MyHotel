@@ -8,7 +8,7 @@ import { GetDataService } from "~/app/services/getData.service";
 import { RouterExtensions } from "@nativescript/angular";
 import { Spa } from "~/app/models/spa.model";
 import { UpdateDataService } from "~/app/services/updateData.service";
-import { ToastDuration, ToastPosition, Toasty } from "nativescript-toasty-ns-7";
+import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
 
 @Component({
     selector: "List",

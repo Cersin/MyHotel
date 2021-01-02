@@ -7,9 +7,6 @@
 </GridLayout>
 
 <GridLayout *ngIf="!isLoading" height="100%" class="background listView" rows="*">
-    <RadCalendar row="0" [eventSource]="calendarEvents"
-                 eventsViewMode="Popover"
-                 selectionMode="Single"
-                 transitionMode="Slide"></RadCalendar>
+    <RadCalendar row="0" [eventSource]="calendarEvents"></RadCalendar>
 <!--    <Button (tap)="check()" text="check" row="0"></Button>-->
 </GridLayout>

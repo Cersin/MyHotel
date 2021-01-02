@@ -4,7 +4,7 @@ import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
 import { Room } from "~/app/models/room.model";
 import { UpdateDataService } from "~/app/services/updateData.service";
-import { ToastDuration, ToastPosition, Toasty } from 'nativescript-toasty-ns-7';
+import { ToastDuration, ToastPosition, Toasty } from '@triniwiz/nativescript-toasty';
 
 @Component({
     selector: "RoomEdit",

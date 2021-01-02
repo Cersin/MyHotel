@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ToastDuration, ToastPosition, Toasty } from 'nativescript-toasty-ns-7';
+import { ToastDuration, ToastPosition, Toasty } from '@triniwiz/nativescript-toasty';
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
 import { Page } from "@nativescript/core";

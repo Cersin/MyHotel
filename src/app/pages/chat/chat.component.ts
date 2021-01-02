@@ -5,7 +5,7 @@ import { GetDataService } from "~/app/services/getData.service";
 import { AddDataService } from "~/app/services/addData.service";
 import { Message } from "~/app/models/message.model";
 import { LocalNotifications } from "nativescript-local-notifications";
-import { ToastDuration, ToastPosition, Toasty } from "nativescript-toasty-ns-7";
+import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
 
 @Component({
     selector: "Chat",
