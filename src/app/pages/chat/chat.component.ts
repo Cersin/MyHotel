@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectorRef } from "@angular/core";
 import { Page } from "@nativescript/core";
 import { firebase, firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
@@ -22,10 +22,11 @@ export class ChatComponent implements OnInit {
     private accessKey: firestore.DocumentData;
     message: Message;
     messages: Array<Message> = [];
-    @ViewChild("ScrollList", { static: true }) private scrollList: ElementRef;
+    @ViewChild("ScrollList", {static: true}) private scrollList: ElementRef;
 
     constructor(private page: Page,
                 private getDataService: GetDataService,
+                private ref: ChangeDetectorRef,
                 private addDataService: AddDataService) {
         // Use the constructor to inject services.
         page.actionBarHidden = true;
@@ -88,6 +89,7 @@ export class ChatComponent implements OnInit {
     loadData() {
         // Ustawia ładowanie na true oraz zeruje inne zmienne
         this.accessKey = null;
+        this.countForMessage = 1;
         // Pobiera UID
         this.getDataService.getUID().then((user) => {
             this.userUID = user;
@@ -100,32 +102,27 @@ export class ChatComponent implements OnInit {
                     this.getDataService.getMessages(this.accessKey.accessKey)
                         .orderBy("message.time", "desc")
                         .limit(20)
-                        .onSnapshot({includeMetadataChanges: true}, (snapshot: firestore.QuerySnapshot) => {
-                            this.messages = [];
-                            snapshot.forEach((doc) => {
-                                this.messages.push(<Message>doc.data().message);
-                                setTimeout(() => {
-                                    this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, true);
-                                }, 500);
+                        .onSnapshot({includeMetadataChanges: true}, async (snapshot: firestore.QuerySnapshot) => {
+                            const fetchedMessages = [];
+                            await snapshot.docSnapshots.forEach((doc) => {
+                                if (doc) {
+                                    fetchedMessages.push(<Message>doc.data().message);
+                                }
                             })
-                            if (!snapshot.metadata.fromCache) {
-                                snapshot.docChanges().forEach((doc) => {
-                                    if (doc.type === "added") {
-                                        if (doc.doc.data().message.user !== this.userUID.displayName && this.countForMessage !== 1) {
-                                            this.countForMessage++;
-                                            this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, true);
-                                            this.setUpNotification();
-                                        }
-                                    }
-                                })
-                            }
-                    })
-                }).then(() => {
-                    setTimeout(() => {
-                        this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, true);
-                    }, 5000)
-            })
-        })
-    }
+                            // if (!snapshot.metadata.fromCache) {
+                            //     snapshot.docChanges().forEach((doc) => {
+                            //         if (doc.type === "added" && doc.doc.data().message.user !== this.userUID.displayName && this.countForMessage === 0) {
+                            //             console.log("TO JE DODANE");
+                            //         }
+                            //     })
+                            // }
 
+                            this.messages = fetchedMessages.reverse();
+                            await this.ref.detectChanges();
+                            this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, false);
+                        })
+                })
+        })
+
+    }
 }

@@ -2,25 +2,11 @@
     <Label text="Search"></Label>
 </ActionBar>
 
-<!--<GridLayout rows="auto,auto,auto,*" height="100%" backgroundColor="orangered">-->
-<!--    <Button marginTop="50" row="0" color="yellow" text="Dodaj wiadomosc" (tap)="add()"></Button>-->
-<!--    <Button row="1" color="green" text="refresh" (tap)="check()"></Button>-->
-<!--    <Button row="2" color="brown" text="reverse" (tap)="reverse()"></Button>-->
-<!--    <ScrollView row="3">-->
-<!--        <StackLayout orientation="vertical">-->
-<!--            <StackLayout *ngFor="let message of messages.reverse()" orientation="vertical">-->
-<!--                <Label [text]="message.message"></Label>-->
-<!--                <Label [text]="message.user"></Label>-->
-<!--            </StackLayout>-->
-<!--        </StackLayout>-->
-<!--    </ScrollView>-->
-<!--</GridLayout>-->
-
 <StackLayout class="chatView background">
     <GridLayout class="chatView__container" rows="*, auto">
         <ScrollView row="0" id="myScroll" #ScrollList id="myScroller">
             <StackLayout class="chatView__container__messages" orientation="vertical">
-                    <StackLayout *ngFor="let post of messages.reverse()" width="100%" orientation="vertical">
+                    <StackLayout *ngFor="let post of messages" width="100%" orientation="vertical">
                         <FlexboxLayout class="chatView__container__messages__description"  [ngClass]="{'flexLeft': post.user === userUID.displayName,
                                 'flexRight': post.user !== userUID.displayName}">
                             <Label class="chatView__container__messages__description-time" [text]="post.hours + ':' + post.minutes"></Label>
