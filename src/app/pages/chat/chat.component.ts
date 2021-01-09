@@ -29,14 +29,6 @@ export class ChatComponent implements OnInit {
                 private addDataService: AddDataService) {
         // Use the constructor to inject services.
         page.actionBarHidden = true;
-        LocalNotifications.hasPermission().then(() => {
-            console.log("ok, ma pozwolenie");
-        }).catch(() => {
-            LocalNotifications.requestPermission().then(() => {
-                console.log("Ok mamy pozwolenie");
-            })
-        })
-
     }
 
     ngOnInit(): void {
