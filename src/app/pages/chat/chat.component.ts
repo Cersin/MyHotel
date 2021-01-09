@@ -4,7 +4,6 @@ import { firebase, firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
 import { AddDataService } from "~/app/services/addData.service";
 import { Message } from "~/app/models/message.model";
-import { LocalNotifications } from "nativescript-local-notifications";
 import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
 
 @Component({
@@ -55,8 +54,6 @@ export class ChatComponent implements OnInit {
         const time: Date = new Date();
         this.message = {
             message: this.newMessage,
-            hours: time.getHours(),
-            minutes: time.getMinutes(),
             time: time.getTime(),
             user: this.userUID.displayName
         }
@@ -67,23 +64,6 @@ export class ChatComponent implements OnInit {
             this.messageSent.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
             this.newMessage = "";
         }
-    }
-
-    setUpNotification() {
-        LocalNotifications.schedule([{
-            id: 100, // generated id if not set
-            title: 'Nowa wiadomość',
-            body: 'Odśwież wiadomości',
-            ongoing: true, // makes the notification ongoing (Android only)
-            at: new Date(new Date().getTime() + (1000)) // 1s from now
-        }]).then(
-            (scheduledIds) => {
-                console.log("Notification id(s) scheduled: " + JSON.stringify(scheduledIds));
-            },
-            (error) => {
-                console.log("scheduling error: " + error);
-            }
-        )
     }
 
     loadData() {
@@ -106,20 +86,14 @@ export class ChatComponent implements OnInit {
                             const fetchedMessages = [];
                             await snapshot.docSnapshots.forEach((doc) => {
                                 if (doc) {
-                                    fetchedMessages.push(<Message>doc.data().message);
+                                    fetchedMessages.push({user: doc.data().message.user,
+                                                          message: doc.data().message.message,
+                                                          time: new Date(doc.data().message.time)});
                                 }
                             })
-                            // if (!snapshot.metadata.fromCache) {
-                            //     snapshot.docChanges().forEach((doc) => {
-                            //         if (doc.type === "added" && doc.doc.data().message.user !== this.userUID.displayName && this.countForMessage === 0) {
-                            //             console.log("TO JE DODANE");
-                            //         }
-                            //     })
-                            // }
-
                             this.messages = fetchedMessages.reverse();
                             await this.ref.detectChanges();
-                            this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, false);
+                            this.scrollList.nativeElement.scrollToVerticalOffset(this.scrollList.nativeElement.scrollableHeight, true);
                         })
                 })
         })

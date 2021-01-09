@@ -9,7 +9,7 @@
                     <StackLayout *ngFor="let post of messages" width="100%" orientation="vertical">
                         <FlexboxLayout class="chatView__container__messages__description"  [ngClass]="{'flexLeft': post.user === userUID.displayName,
                                 'flexRight': post.user !== userUID.displayName}">
-                            <Label class="chatView__container__messages__description-time" [text]="post.hours + ':' + post.minutes"></Label>
+                            <Label class="chatView__container__messages__description-time" [text]="post.time | date: 'HH:mm'"></Label>
                             <Label class="chatView__container__messages__description-display" [text]="post.user"></Label>
                         </FlexboxLayout>
                         <Label textWrap="true" class="chatView__container__messages-text leftAlign"
