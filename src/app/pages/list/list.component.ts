@@ -1,12 +1,9 @@
-import { ItemEventData } from "@nativescript/core/ui/list-view"
 import { Component, OnInit } from "@angular/core";
 import { Page } from "@nativescript/core";
-import { Hotel } from "~/app/models/hotel.model";
 import { firestore } from "@nativescript/firebase";
 import { Room } from "~/app/models/room.model";
 import { GetDataService } from "~/app/services/getData.service";
 import { RouterExtensions } from "@nativescript/angular";
-import { Spa } from "~/app/models/spa.model";
 import { UpdateDataService } from "~/app/services/updateData.service";
 import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
 

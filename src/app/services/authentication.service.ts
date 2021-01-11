@@ -15,12 +15,12 @@ export class AuthenticationService {
     constructor(private _routerExtension: RouterExtensions, private _activeRoute: ActivatedRoute) {
     }
 
-    //POBIERA ACCESS KEY Z HOTELOW
+    // POBIERA ACCESS KEY Z HOTELOW
     hotelCheckId() {
         return firestore.collection("Hotele").get();
     }
 
-    //DODAJE KLUCZ DO BAZY UZYTKOWNIKA PO ID
+    // DODAJE KLUCZ DO BAZY UZYTKOWNIKA PO ID
     addKeyToUser(key, id) {
         firestore.collection("Users").doc(id).set({
             accessKey: key
@@ -32,7 +32,7 @@ export class AuthenticationService {
     // GENERUJE TYMCZASOWE GODZINY DLA KALENDARZA
     addCalendarTimes(id) {
         let i = 0;
-        const startDate = new Date;
+        const startDate = new Date();
         const endDate = new Date();
         for (i = 1; i < 30; i++) {
             startDate.setDate(i);

@@ -3,7 +3,6 @@ import { Page } from "@nativescript/core";
 import { GetDataService } from "~/app/services/getData.service";
 import { CalendarEvent } from "nativescript-ui-calendar";
 import { firebase, firestore } from "@nativescript/firebase";
-import { Hotel } from "~/app/models/hotel.model";
 
 @Component({
     selector: "Calendar",

@@ -5,7 +5,7 @@
   "templateType": "App template",
   "version": "7.0.5",
   "description": "NativeScript Application",
-  "author": "NativeScript Team <oss@nativescript.org>",
+  "author": "",
   "license": "SEE LICENSE IN <your-license-filename>",
   "publishConfig": {
     "access": "public"
