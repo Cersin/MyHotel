@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { firebase, firestore } from "@nativescript/firebase";
 import { User } from "~/app/models/user.model";
 import { TNSFancyAlert } from "nativescript-fancyalert";
-import { ToastDuration, Toasty } from '@triniwiz/nativescript-toasty';
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
+import * as Toast from "nativescript-toasts";
 
 @Injectable()
 export class AuthenticationService {
-
-    loginToast = new Toasty({text: "Zalogowano pomyślnie"});
-    loginErrorToast = new Toasty({text: "Zły adres e-mail lub hasło"});
+    loginToast: Toast.ToastOptions = {text: "Zalogowano pomyślnie", duration: Toast.DURATION.SHORT};
+    loginErrorToast: Toast.ToastOptions = {text: "Zły adres e-mail lub hasło", duration: Toast.DURATION.SHORT};
 
     constructor(private _routerExtension: RouterExtensions, private _activeRoute: ActivatedRoute) {
     }
@@ -52,7 +51,7 @@ export class AuthenticationService {
 
     canGo(verified) {
         if (verified) {
-            this.loginToast.setToastDuration(ToastDuration.SHORT).show();
+            Toast.show(this.loginToast);
             this._routerExtension.navigate(['../tabs'], { clearHistory: true, relativeTo: this._activeRoute });
         } else {
             firebase.sendEmailVerification().then(() => {
@@ -81,7 +80,7 @@ export class AuthenticationService {
             })
             .catch((error) => {
                 console.log(error);
-                this.loginErrorToast.setToastDuration(ToastDuration.SHORT).show();
+                Toast.show(this.loginErrorToast);
             })
     }
 
@@ -94,7 +93,6 @@ export class AuthenticationService {
 
     // TWORZY UZYTKOWNIKA
     createUser(user: User) {
-        console.log(user);
         firebase.createUser({
             email: user.email,
             password: user.password
@@ -102,7 +100,6 @@ export class AuthenticationService {
             this.addKeyToUser(user.accessKey, userInfo.uid);
             this.addCalendarTimes(userInfo.uid);
             this.setDisplayName(user.displayName);
-            console.log(userInfo);
             TNSFancyAlert.showInfo(
                 "Konto w MyHotel!",
                 "Utwrzono konto dla użytkownika o adresie email: " + user.email,

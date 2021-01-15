@@ -4,7 +4,7 @@ import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
 import { Room } from "~/app/models/room.model";
 import { UpdateDataService } from "~/app/services/updateData.service";
-import { ToastDuration, ToastPosition, Toasty } from '@triniwiz/nativescript-toasty';
+import * as Toast from 'nativescript-toasts';
 
 @Component({
     selector: "RoomEdit",
@@ -12,7 +12,7 @@ import { ToastDuration, ToastPosition, Toasty } from '@triniwiz/nativescript-toa
     styleUrls: ["./roomEdit.component.scss"]
 })
 export class RoomEditComponent {
-    roomUpdated = new Toasty({text: "Pokój zaktualizowany"});
+    roomUpdated: Toast.ToastOptions = {text: "Pokój zaktualizowany", duration: Toast.DURATION.SHORT};
     room: Room;
     accessKey: any;
 
@@ -43,7 +43,7 @@ export class RoomEditComponent {
                 klimatyzacja: this.room.wyposazenie.klimatyzacja
             }
         }).then(() => {
-            this.roomUpdated.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+            Toast.show(this.roomUpdated);
             this._routerExtension.navigate(["../tabs"], { clearHistory: true, skipLocationChange: true });
         }).catch((err) => {
             console.log(err);

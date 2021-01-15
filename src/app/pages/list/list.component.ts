@@ -5,7 +5,7 @@ import { Room } from "~/app/models/room.model";
 import { GetDataService } from "~/app/services/getData.service";
 import { RouterExtensions } from "@nativescript/angular";
 import { UpdateDataService } from "~/app/services/updateData.service";
-import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
+import * as Toast from "nativescript-toasts";
 
 @Component({
     selector: "List",
@@ -13,7 +13,7 @@ import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toa
     styleUrls: ["./list.component.scss"]
 })
 export class ListComponent implements OnInit {
-    spaUpdated = new Toasty({text: "Pokój zaktualizowany"});
+    spaUpdated: Toast.ToastOptions = {text: "Spa zaktualizowane", duration: Toast.DURATION.SHORT};
     actionBarName: string = "Pokoje";
     rooms: Array<Room> = [];
     spa: firestore.DocumentData = [];
@@ -35,7 +35,6 @@ export class ListComponent implements OnInit {
 
     changeView(name) {
         this.actionBarName = name;
-        console.log(this.spa);
     }
 
     check(room: Room) {
@@ -57,7 +56,7 @@ export class ListComponent implements OnInit {
             }
         }).then(() => {
             this.loadData();
-            this.spaUpdated.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+            Toast.show(this.spaUpdated);
         }).catch((err) => {
             console.log(err);
         })

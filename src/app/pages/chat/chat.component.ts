@@ -4,7 +4,7 @@ import { firebase, firestore } from "@nativescript/firebase";
 import { GetDataService } from "~/app/services/getData.service";
 import { AddDataService } from "~/app/services/addData.service";
 import { Message } from "~/app/models/message.model";
-import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toasty";
+import * as Toast from "nativescript-toasts";
 
 @Component({
     selector: "Chat",
@@ -12,9 +12,10 @@ import { ToastDuration, ToastPosition, Toasty } from "@triniwiz/nativescript-toa
     styleUrls: ["./chat.component.scss"]
 })
 export class ChatComponent implements OnInit {
-    noMessage = new Toasty({text: "Musisz wpisać jakąś wiadomość!"});
-    messageSent = new Toasty({text: "Wiadomość wysłano!"});
-    reloaded = new Toasty({text: "Wiadomości przeładowano!"});
+    noMessage: Toast.ToastOptions = {text: "Musisz wpisać jakąś wiadomość!", duration: Toast.DURATION.SHORT};
+    messageSent: Toast.ToastOptions = {text: "Wiadomość wysłano!", duration: Toast.DURATION.SHORT};
+    reloaded: Toast.ToastOptions = {text: "Wiadomości przeładowano!", duration: Toast.DURATION.SHORT};
+
     newMessage: string = "";
     countForMessage: number = 0;
     userUID: firebase.User;
@@ -39,7 +40,7 @@ export class ChatComponent implements OnInit {
     reload() {
         this.countForMessage = 1;
         this.loadData();
-        this.reloaded.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+        Toast.show(this.reloaded);
     }
 
     send() {
@@ -50,10 +51,10 @@ export class ChatComponent implements OnInit {
             user: this.userUID.displayName
         }
         if (this.newMessage === "") {
-            this.noMessage.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+            Toast.show(this.noMessage);
         } else {
             this.addDataService.addMessage(this.accessKey.accessKey, this.message);
-            this.messageSent.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+            Toast.show(this.messageSent);
             this.newMessage = "";
         }
     }

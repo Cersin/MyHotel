@@ -1,10 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { ToastDuration, ToastPosition, Toasty } from '@triniwiz/nativescript-toasty';
 import { RouterExtensions } from "@nativescript/angular";
 import { ActivatedRoute } from "@angular/router";
 import { Page } from "@nativescript/core";
 import { User } from "~/app/models/user.model";
 import { AuthenticationService } from "~/app/services/authentication.service";
+import * as Toast from "nativescript-toasts";
 const appSettings = require("@nativescript/core/application-settings");
 
 @Component({
@@ -13,9 +13,8 @@ const appSettings = require("@nativescript/core/application-settings");
     styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent implements OnInit {
-
-    passwordNoMatch = new Toasty({text: "Hasła się nie zgadzają"});
-    accessKeyFail = new Toasty({text: "Niepoprawny klucz dostępu!"});
+    passwordNoMatch: Toast.ToastOptions = {text: "Hasła się nie zgadzają", duration: Toast.DURATION.SHORT};
+    accessKeyFail: Toast.ToastOptions = {text: "Niepoprawny klucz dostępu!", duration: Toast.DURATION.SHORT};
 
     user: User;
     passwordCorrect: string;
@@ -45,10 +44,7 @@ export class LoginComponent implements OnInit {
                     hotelIDs.push(doc.id);
                 });
             }).then(() => {
-                console.log(hotelIDs);
                 this.hotelIds = hotelIDs;
-                console.log(this.hotelIds.some(e => e === this.user.accessKey));
-
             })
                 .catch(error => console.log(error));
         }
@@ -63,10 +59,10 @@ export class LoginComponent implements OnInit {
             this.authenticationService.createUser(this.user);
         }
         else if (this.user.password !== this.passwordCorrect) {
-            this.passwordNoMatch.setToastDuration(ToastDuration.SHORT).setToastPosition(ToastPosition.BOTTOM).show();
+            Toast.show(this.passwordNoMatch);
         }
         else if (!this.hotelIds.some(e => e === this.user.accessKey)) {
-            this.accessKeyFail.setToastDuration(ToastDuration.SHORT).show();
+            Toast.show(this.accessKeyFail);
         }
     }
 

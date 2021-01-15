@@ -92,7 +92,6 @@ export class HomeComponent implements OnInit {
 
     logout() {
         firebase.logout().then(() => {
-            console.log("Wylogowano");
             this._routerExtension.navigate(['/login'], { clearHistory: true });
         }).catch((e) => {
             console.log(e);

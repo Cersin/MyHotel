@@ -23,9 +23,6 @@ export class CalendarComponent implements OnInit {
     ngOnInit(): void {
         this.loadData();
     }
-    check() {
-        console.log(this.calendarEvents);
-    }
 
     loadData() {
         // Ustawia ładowanie na true oraz zeruje inne zmienne
